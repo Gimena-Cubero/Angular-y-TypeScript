@@ -1,0 +1,72 @@
+[
+    {
+        "taxonId": 48715,
+        "categoria": "coloridos",
+        "descripcion": "Hongo rojo con manchas blancas, muy icónico en la cultura popular.",
+        "morfologia": "Sombrero rojo brillante con verrugas blancas remanentes del velo universal.",
+        "destacado": true
+    },
+    {
+        "taxonId": 55899,
+        "categoria": "coloridos",
+        "descripcion": "Cuando está húmedo es de un lila púrpura intenso, que se desvanece al secarse.",
+        "morfologia": "Las esporas son esféricas e hialinas, y poseen espinas puntiagudas.",
+        "destacado": false
+    },
+    {
+        "taxonId": 355917,
+        "categoria": "coloridos",
+        "descripcion": "Pequeño hongo de un llamativo color azul celeste brillante, también conocido como el parasol de los elfos.",
+        "morfologia": "Sombrero hemisférico a convexo de color azul intenso con un centro a veces más oscuro.",
+        "destacado": true
+    },
+    {
+        "taxonId": 194659,
+        "categoria": "coloridos",
+        "descripcion": "Hongo pequeño de color rojo bermellón o escarlata brillante que destaca entre el musgo.",
+        "morfologia": "Sombrero convexo de textura cerosa que puede aplanarse con la edad, con laminillas adherentes.",
+        "destacado": false
+    },
+    {
+        "taxonId": 155173,
+        "categoria": "luminosos",
+        "descripcion": "Famoso hongo bioluminiscente que emite una luz verde brillante en la oscuridad.",
+        "morfologia": "Sombrero grisáceo pálido y pegajoso con láminas adnadas que brillan intensamente por la noche.",
+        "destacado": true
+    },
+    {
+        "taxonId": 1141243,
+        "categoria": "luminosos",
+        "descripcion": "Pequeño hongo bioluminiscente descubierto en los bosques tropicales de Brasil.",
+        "morfologia": "sombrero diminuto de aspecto delicado que emite una luz amarillenta o verdosa constante en la oscuridad.",
+        "destacado": false
+    },
+    {
+        "taxonId": 64021,
+        "categoria": "luminosos",
+        "descripcion": "Conocido como el hongo del fuego fatuo o de la lámpara de aceite, capaz de emitir bioluminiscencia tenue.",
+        "morfologia": "Cuerpo fructífero de colores anaranjados o rojizos que crece en racimos sobre madera de olivos o frondosas.",
+        "destacado": false
+    },
+    {
+        "taxonId": 51234,
+        "categoria": "extraordinarios",
+        "descripcion": "Llamado comúnmente jaula roja debido a su aspecto alienígena en forma de red o enrejado esférico.",
+        "morfologia": "Estructura esponjosa en forma de celosía poligonal de color rojo vivo que presenta una gleba de olor desagradable.",
+        "destacado": true
+    },
+    {
+        "taxonId": 48429,
+        "categoria": "extraordinarios",
+        "descripcion": "Hongo con apariencia de cascada de carnosas espinas blancas, parecido a la melena de un león.",
+        "morfologia": "Cuerpo fructífero masivo, globoso, caracterizado por una densa capa de espinas colgantes y flexibles.",
+        "destacado": true
+    },
+    {
+        "taxonId": 63074,
+        "categoria": "extraordinarios",
+        "descripcion": "Conocido como estrella de tierra, se abre de forma geométrica como una flor o estrella.",
+        "morfologia": "Capa externa que se divide en forma de 5 a 8 puntas estrelladas, con un saco esporífero central provisto de un ostiolo.",
+        "destacado": false
+    }
+]
