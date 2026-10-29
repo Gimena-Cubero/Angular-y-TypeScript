@@ -15,10 +15,17 @@ export class App {
   //COMPROBAR QUE PUEDE LEER los json
   //tambien se considera inyecion de dependencias un componente puede usar un servicio
   constructor(private hongosService: Hongos){ //nos proporciona nuestro servicio de hongos
-    this.hongosService.obtenerHongos().subscribe (datos => { //datos recibe el arreglo de hongos
+    this.hongosService.obtenerHongos().subscribe ({ 
       //subscribe permite recibir datos cuando llegue la respuesta
-      console.log(datos); 
-    })
+
+      //manejar si este falla
+      next: (datos) => { //datos recibe el arreglo de hongos
+        console.log('Hongos recibidos:', datos);
+      },
+      error: (error) =>{
+        console.error('Error all obtener los hongos:', error);
+      }
+    });
 
   }
   

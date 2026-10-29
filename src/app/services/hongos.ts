@@ -14,6 +14,7 @@ export class Hongos {
     //metodo
     obtenerHongos() {
         //get devuelve un observable
+        //si esta direcion esta mal escrita saldra un error que majejamos en app.ts
         return this.http.get<Hongo[]>('/assets/hongos.json');
     }
 }
