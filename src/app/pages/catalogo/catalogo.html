@@ -1,0 +1,13 @@
+<!-- es esta parte se mostrara el catalogo de dichos hongos -->
+<h1>Catálogo de FungiVerse</h1>
+
+
+@for (hongo of hongos; track hongo.taxonId){
+    <!-- hongos = arreglo declarado en catalogo ts -->
+    <div>
+        <h2>{{ hongo.categoria }}</h2>
+        <p>{{ hongo.descripcion }}</p>
+    </div>
+}@empty { // cuando no hay elementos sale este mensaje
+    <p>No hay hongos disponibles en el catálogo</p>
+}
