@@ -3,15 +3,26 @@
 
 <!-- <p>Estado de carga: {{ cargando() }}</p> -->
 
-@if (cargando()) {
+@if (cargando()) { 
+  <!-- si estamos esperando  -->
   <p>Cargando hongos...</p>
+
+} @else if (errorCarga()) {
+  <!-- si esta cargando y huvo un error -->
+  <p>No se pudo cargar el catálogo. Inténtalo nuevamente.</p>
+
 } @else {
+  <!-- muestra los hongos -->
+   
   @for (hongo of hongos(); track hongo.taxonId) {
     <!-- hongos = arreglo declarado en catalogo ts -->
-    <div>
+    <article class="tarjetaHongo">
       <h2>{{ hongo.categoria }}</h2>
       <p>{{ hongo.descripcion }}</p>
-    </div>
+      <p><strong>Morfología:</strong> {{hongo.morfologia}}</p>
+    </article>
+    
+
   } @empty {  
     <!-- cuando no hay elementos sale este mensaje -->
     <p>No hay hongos disponibles en el catálogo.</p>
