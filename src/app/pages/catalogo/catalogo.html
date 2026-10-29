@@ -1,13 +1,22 @@
 <!-- es esta parte se mostrara el catalogo de dichos hongos -->
 <h1>Catálogo de FungiVerse</h1>
 
+<!-- <p>Estado de carga: {{ cargando() }}</p> -->
 
-@for (hongo of hongos; track hongo.taxonId){
+@if (cargando()) {
+  <p>Cargando hongos...</p>
+} @else {
+  @for (hongo of hongos(); track hongo.taxonId) {
     <!-- hongos = arreglo declarado en catalogo ts -->
     <div>
-        <h2>{{ hongo.categoria }}</h2>
-        <p>{{ hongo.descripcion }}</p>
+      <h2>{{ hongo.categoria }}</h2>
+      <p>{{ hongo.descripcion }}</p>
     </div>
-}@empty { // cuando no hay elementos sale este mensaje
-    <p>No hay hongos disponibles en el catálogo</p>
+  } @empty {  
+    <!-- cuando no hay elementos sale este mensaje -->
+    <p>No hay hongos disponibles en el catálogo.</p>
+  }
 }
+
+
+
