@@ -1,11 +1,16 @@
 import { Routes } from '@angular/router';
 import { Catalogo } from './pages/catalogo/catalogo';// creacion de los catalogos de los hongos
 import { Inicio } from './pages/inicio/inicio';
+import { Explorar } from './pages/explorar/explorar';
 
 export const routes: Routes = [
     {
         path : '',
         component : Inicio
+    },
+    {
+        path : 'explorar',
+        component : Explorar
     },
     {
         //creacion de la ruta para ver el catalogo de los hongos 

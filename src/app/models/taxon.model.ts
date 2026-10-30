@@ -1,10 +1,13 @@
 //esta sera la interfase para manejar los datos de la api
 export interface Taxon {
-    
     id : number;
     name : string;
-    preferred_common_name? : string; //algunas pordrian no tener
+    preferred_common_name? : string;//algunas pordrian no tener
     taxon_photos? : TaxonFoto[];
+    default_photo? : Foto;
+
+    
+    
 }
 
 // segunda interfase
