@@ -15,4 +15,12 @@ export class Inaturalist {
         //realiza una solicitud get, devuelve un observable para que pueda suscribirse y obtener los datos
         return this.http.get<RespuestaTaxones>(url); // le dice al ts que se prepare para la api pues 
     }
+
+    //metodo
+    obtenerVariosTaxones(ids: number[]){
+        //join hace que se unan con los ids
+        const URL = `https://api.inaturalist.org/v1/taxa/${ids.join(',')}`;
+        return this.http.get<RespuestaTaxones>(URL)
+    }
+    
 }

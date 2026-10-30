@@ -2,7 +2,6 @@
 <h1>Catálogo de FungiVerse</h1>
 
 <!-- <p>Estado de carga: {{ cargando() }}</p> -->
-
 @if (cargando()) { 
   <!-- si estamos esperando  -->
   <p>Cargando hongos...</p>
@@ -15,13 +14,21 @@
   <!-- muestra los hongos -->
    
   @for (hongo of hongos(); track hongo.taxonId) {
-    <!-- hongos = arreglo declarado en catalogo ts -->
-    <article class="tarjetaHongo">
-      <h2>{{ hongo.categoria }}</h2>
-      <p>{{ hongo.descripcion }}</p>
-      <p><strong>Morfología:</strong> {{hongo.morfologia}}</p>
-    </article>
-    
+    @if (buscarTaxon(hongo.taxonId); as taxon) { <!-- //duscale el que tenga el mismo id -->
+      <!-- hongos = arreglo declarado en catalogo ts -->
+      <article class="tarjetaHongo">
+        <h2>{{ taxon.name }}</h2>
+        @if (taxon.taxon_photos?.[0]?.photo?.medium_url; as fotoUrl) {
+          <img [src]="fotoUrl" [alt]="taxon.name">
+        } @else {
+          <p>Fotografía no disponible</p>
+        }
+        <p>Nombre común: {{ taxon.preferred_common_name ?? 'No disponible' }}</p>
+        <p>Categoría: {{ hongo.categoria }}</p>
+        <p>{{ hongo.descripcion }}</p>
+        <p><strong>Morfología:</strong> {{ hongo.morfologia }}</p>
+      </article>
+    } 
 
   } @empty {  
     <!-- cuando no hay elementos sale este mensaje -->

@@ -68,5 +68,105 @@
         "descripcion": "Conocido como estrella de tierra, se abre de forma geométrica como una flor o estrella.",
         "morfologia": "Capa externa que se divide en forma de 5 a 8 puntas estrelladas, con un saco esporífero central provisto de un ostiolo.",
         "destacado": false
+    },
+
+    {
+        "taxonId": 54143,
+        "categoria": "coloridos",
+        "descripcion": "Reconocido por su vibrante color amarillo brillante y su forma de copa con bordes festoneados.",
+        "morfologia": "Apotecio en forma de copa de color amarillo intenso a naranja brillante, con el exterior finamente aterciopelado.",
+        "destacado": false
+    },
+    {
+        "taxonId": 123847,
+        "categoria": "coloridos",
+        "descripcion": "Llamativo hongo de color naranja intenso que contrasta fuertemente con la madera en descomposición donde crece.",
+        "morfologia": "Cuerpo fructífero en forma de pequeña copa o disco con márgenes pilosos de tonos rojizos y naranjas.",
+        "destacado": false
+    },
+    {
+        "taxonId": 54687,
+        "categoria": "coloridos",
+        "descripcion": "Conocido como el hongo copa de color escarlata, destaca por su tonalidad roja profunda sobre la hojarasca invernal.",
+        "morfologia": "Cuerpo fructífero en forma de copa profunda de interior rojo vivo y exterior blanquecino o rosado.",
+        "destacado": true
+    },
+    {
+        "taxonId": 118228,
+        "categoria": "coloridos",
+        "descripcion": "Pequeño hongo de tonalidad violeta o morada uniforme que suele aparecer solitario o en pequeños grupos entre el musgo.",
+        "morfologia": "Sombrero convexo a plano de color lila oscuro a violeta brillante, con láminas adnatas del mismo tono.",
+        "destacado": false
+    },
+    {
+        "taxonId": 383324,
+        "categoria": "luminosos",
+        "descripcion": "Especie tropical capaz de emitir una suave luminiscencia verdosa en sus laminillas y cuerpo durante la noche.",
+        "morfologia": "Sombrero de tonalidades marrones claras a amarillentas con láminas densas que concentran la capacidad de brillo.",
+        "destacado": false
+    },
+    {
+        "taxonId": 351234,
+        "categoria": "luminosos",
+        "descripcion": "Fascinante hongo bioluminiscente de los bosques húmedos que resalta por su resplandor verde en la hojarasca.",
+        "morfologia": "Sombrero pequeño de textura delicada y tallo delgado que emite luz continua en su fase madura.",
+        "destacado": false
+    },
+    {
+        "taxonId": 704875,
+        "categoria": "luminosos",
+        "descripcion": "Especie recientemente documentada en regiones tropicales que exhibe fluorescencia y bioluminiscencia nocturna.",
+        "morfologia": "Estructura compacta con estipe corto y sombrero cónico que concentra la emisión lumínica en las laminillas.",
+        "destacado": false
+    },
+    {
+        "taxonId": 352358,
+        "categoria": "extraordinarios",
+        "descripcion": "Llamado comúnmente hongo pulpo o dedos del diablo, emerge de un 'huevo' desplegando brazos tentaculares rojos.",
+        "morfologia": "De 4 a 7 brazos de color rojo intenso cubiertos de una gleba negruzca de olor fuerte que atrae insectos.",
+        "destacado": true
+    },
+    {
+        "taxonId": 335017,
+        "categoria": "extraordinarios",
+        "descripcion": "Hongo parásito que crece exclusivamente sobre las larvas de polillas subterráneas, adoptando una forma alargada y singular.",
+        "morfologia": "Estroma erecto, cilíndrico y de color marrón oscuro que emerge directamente de la cabeza de la oruga fosilizada.",
+        "destacado": false
+    },
+    {
+        "taxonId": 58688,
+        "categoria": "extraordinarios",
+        "descripcion": "Conocido como diente de sangre o diente sangrante, exuda gotas de un líquido rojo brillante cuando está fresco.",
+        "morfologia": "Sombrero blanquecino de superficie aterciopelada que secreta gotitas rojas y posee espinas fértiles en la parte inferior.",
+        "destacado": true
+    },
+    {
+        "taxonId": 328220,
+        "categoria": "extraordinarios",
+        "descripcion": "Especie que forma intrincadas estructuras ramificadas muy similares a los corales marinos sobre el suelo del bosque.",
+        "morfologia": "Cuerpo fructífero erecto altamente ramificado de tonos amarillos, blancos o rosados, sin sombrero diferenciado.",
+        "destacado": false
+    },
+    {
+        "taxonId": 55160,
+        "categoria": "extraordinarios",
+        "descripcion": "Hongo con forma de copa profunda que en su interior desarrolla proyecciones perladas parecidas a pequeños nidos con huevos.",
+        "morfologia": "Cuerpo en forma de pequeño nido de 1 cm que contiene peridiolos lenticulares en su interior.",
+        "destacado": false
+    },
+    {
+        "taxonId": 122822,
+        "categoria": "luminosos",
+        "descripcion": "Conocido popularmente como el hongo fantasma, produce un resplandor verdoso muy visible durante las noches en bosques de eucaliptos.",
+        "morfologia": "Cuerpo fructífero grande en forma de embudo de tonalidades cremas, amarillentas o púrpuras, con láminas decurrentes que concentran la bioluminiscencia.",
+        "destacado": true
+    },
+    {
+        "taxonId": 351141,
+        "categoria": "luminosos",
+        "descripcion": "Especie tropical bioluminiscente que destaca por emitir un brillo verdoso intenso en su sombrero y láminas durante la noche.",
+        "morfologia": "Sombrero cónico a convexo de tonos blanquecinos o amarillentos con láminas espaciadas y estipe delgado.",
+        "destacado": false
     }
+
 ]
