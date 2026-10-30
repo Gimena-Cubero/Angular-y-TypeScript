@@ -49,14 +49,14 @@
         "destacado": false
     },
     {
-        "taxonId": 51234,
+        "taxonId": 56534,
         "categoria": "extraordinarios",
         "descripcion": "Llamado comúnmente jaula roja debido a su aspecto alienígena en forma de red o enrejado esférico.",
         "morfologia": "Estructura esponjosa en forma de celosía poligonal de color rojo vivo que presenta una gleba de olor desagradable.",
         "destacado": true
     },
     {
-        "taxonId": 48429,
+        "taxonId": 48425,
         "categoria": "extraordinarios",
         "descripcion": "Hongo con apariencia de cascada de carnosas espinas blancas, parecido a la melena de un león.",
         "morfologia": "Cuerpo fructífero masivo, globoso, caracterizado por una densa capa de espinas colgantes y flexibles.",

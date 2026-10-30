@@ -3,6 +3,7 @@ import { Hongos } from '../../services/hongos'; //servicio
 import { Hongo } from '../../models/hongo.model'; // interface
 import { Inaturalist } from '../../services/inaturalist';
 import { Taxon } from '../../models/taxon.model';
+import { ActivatedRoute } from '@angular/router'; //obtiene informacion de la ruta actual
 
 @Component({
   imports: [],
@@ -18,17 +19,34 @@ export class Catalogo {
   errorCarga = signal(false); // indicara si ocurrio un error al cargar los hongos
   taxonSeleccionado = signal<Taxon | null>(null);
   taxones = signal<Taxon[]>([]);//para combinar la informacion de la api y  del json
+  categoriaActual = signal('');
   
   buscarTaxon(taxonId : number): Taxon | undefined{
     //busca el primero que consida con el id del json si lo encuentra devuelve sino pos nada
     return this.taxones().find((taxon) => taxon.id === taxonId);
   }
+
+  //esto es lo que usamos para dividir a catalogo en 3
+  filtrarPorCategoria(categoria: string): Hongo[] {
+  return this.hongos().filter( //todod los registros del json
+    hongo => hongo.categoria === categoria // compara la categoria del registro con la que queremos mostrar
+  );
+}
   
 
   constructor (
-    private hongosService:Hongos, 
-    private inaturalistService: Inaturalist
+    private hongosService: Hongos, 
+    private inaturalistService: Inaturalist,
+    private route: ActivatedRoute // esto funciona para que angular conosca la ruta que se quiere mostrar
+
   ) {
+    //guarda el parametro de la direccion url y la guarda en el signal
+    this.route.paramMap.subscribe(params =>{
+      this.categoriaActual.set(params.get('categoria') ?? '');
+      console.log('Categoría actual:', this.categoriaActual());
+    });
+
+
     this.hongosService.obtenerHongos().subscribe({
       next: (datos) => {
         this.hongos.set(datos);
@@ -104,6 +122,9 @@ export class Catalogo {
     //     console.error('Error al consultar varios taxones:', error);
     //   }
     // });
+
+    
+    
 
   }
 
