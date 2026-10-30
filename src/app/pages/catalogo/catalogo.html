@@ -13,7 +13,8 @@
 } @else {
   <!-- muestra los hongos -->
    
-  @for (hongo of hongos(); track hongo.taxonId) {
+ 
+  @for (hongo of filtrarPorCategoria(categoriaActual()); track hongo.taxonId){
     @if (buscarTaxon(hongo.taxonId); as taxon) { <!-- //duscale el que tenga el mismo id -->
       <!-- hongos = arreglo declarado en catalogo ts -->
       <article class="tarjetaHongo">

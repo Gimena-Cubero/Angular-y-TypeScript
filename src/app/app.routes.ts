@@ -4,7 +4,8 @@ import { Catalogo } from './pages/catalogo/catalogo';// creacion de los catalogo
 export const routes: Routes = [
     {
         //creacion de la ruta para ver el catalogo de los hongos 
-        path: 'catalogo', //direcion - texto
+        path: 'catalogo/:categoria', //direcion - texto
+        ///:categoria - esto lo combiere en parametro - recibe diferentes valores en esta pocicion
         component: Catalogo // que componente deve mostrar angular - clase en angular
     }
 ];
