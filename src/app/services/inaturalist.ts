@@ -23,4 +23,9 @@ export class Inaturalist {
         return this.http.get<RespuestaTaxones>(URL)
     }
     
+    //la mera papaya el que se conecta con la api y muestra los datos sin el json
+    explorarHongos(pagina: number = 1) { //numero de pagina
+        const URL = `https://api.inaturalist.org/v1/taxa?taxon_id=47170&rank=species&per_page=30&page=${pagina}`;
+        return this.http.get<RespuestaTaxones>(URL);
+    }
 }

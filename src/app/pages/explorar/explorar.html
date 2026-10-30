@@ -1,0 +1,26 @@
+<h1>Explorar hongos</h1>
+
+@if (cargando()) {
+    <p>Cargando especies...</p>
+} @else if (errorCarga()) {
+    <p>No se pudieron cargar las especies.</p>
+} @else {
+    @for (taxon of taxones(); track taxon.id) {
+        <!-- track dice que todos los elementos que ingresen son unicos -->
+        <article>
+            <h2>{{ taxon.name }}</h2>
+            <p>Nombre común: {{ taxon.preferred_common_name ?? 'No disponible' }}</p>
+
+            @if (taxon.default_photo?.medium_url; as fotoUrl) {
+                <img [src]="fotoUrl" [alt]="taxon.name">
+            } @else {
+                <p>Fotografía no disponible</p>
+            }
+        </article>
+    } @empty {
+        <p>No se encontraron especies.</p>
+    }
+    <button type="button" (click)="cargarMasHongos()"  [disabled]="cargandoMas()">
+        {{ cargandoMas() ? 'Cargando...' : 'Ver más hongos' }} <!-- operador vaca -->
+    </button>
+}
