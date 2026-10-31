@@ -28,6 +28,9 @@
         <p>Categoría: {{ hongo.categoria }}</p>
         <p>{{ hongo.descripcion }}</p>
         <p><strong>Morfología:</strong> {{ hongo.morfologia }}</p>
+        <a [routerLink]="['/hongo', hongo.taxonId]">
+          Ver detalles
+        </a>
       </article>
     } 
 

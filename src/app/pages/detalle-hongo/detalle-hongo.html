@@ -1,0 +1,48 @@
+
+
+@if (cargando()) {
+  <p>Cargando información del hongo...</p>
+} @else if (errorCarga()) {
+  <p>No se pudo cargar la información del hongo.</p>
+} @else if (taxon(); as hongo) { <!-- valor del signal -->
+
+  <article>
+    <h1>{{ hongo.name }}</h1>
+
+    <p>
+      <strong>Nombre común:</strong>
+      {{ hongo.preferred_common_name ?? 'No disponible' }}
+    </p>
+
+    @if (hongo.default_photo?.medium_url; as fotoUrl) {
+      <img [src]="fotoUrl" [alt]="hongo.name">
+    } @else {
+      <p>Fotografía no disponible.</p>
+    }
+
+    <p><strong>ID de la especie:</strong> {{ hongo.id }}</p>
+  </article>
+
+} @else {
+  <p>No se encontró la especie solicitada.</p>
+}
+
+<section class="observaciones">
+    <h2>Observaciones de esta especie</h2>
+
+    @if (cargandoObservaciones()) {
+        <p>Cargando observaciones...</p>
+    } @else if (errorObservaciones()) {
+        <p>No se pudieron cargar las observaciones.</p>
+    } @else {
+        @for (observacion of observaciones(); track observacion.id) {
+            <article>
+                <p><strong>Observación:</strong> {{ observacion.id }}</p>
+                <p><strong>Fecha:</strong> {{ observacion.observed_on ?? 'No disponible' }}</p>
+                <p><strong>Lugar:</strong> {{ observacion.place_guess ?? 'No disponible' }}</p>
+            </article>
+        } @empty {
+            <p>No hay observaciones disponibles.</p>
+        }
+    }
+</section>

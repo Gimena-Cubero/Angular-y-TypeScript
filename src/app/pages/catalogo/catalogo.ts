@@ -4,9 +4,10 @@ import { Hongo } from '../../models/hongo.model'; // interface
 import { Inaturalist } from '../../services/inaturalist';
 import { Taxon } from '../../models/taxon.model';
 import { ActivatedRoute } from '@angular/router'; //obtiene informacion de la ruta actual
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-catalogo',
   styleUrl: './catalogo.css',
   templateUrl: './catalogo.html',

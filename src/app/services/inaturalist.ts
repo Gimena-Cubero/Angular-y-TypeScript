@@ -1,6 +1,7 @@
 import { Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http'; //permite hacer la solicitud http
 import { RespuestaTaxones } from '../models/taxon.model'; //interface de la api
+import { RespuestaObservaciones } from '../models/observacion.model'; // interfaz par mas informacio
 
 @Injectable({
     providedIn: 'root'//dice que esta disponible para todas, palabras mas palabras menos
@@ -35,6 +36,13 @@ export class Inaturalist {
         //pagiga - permite que vermas funcione en la busqueda
         const URL = `https://api.inaturalist.org/v1/taxa?q=${encodeURIComponent(nombre.trim())}&taxon_id=47170&rank=species&per_page=30&page=${pagina}`;
         return this.http.get<RespuestaTaxones>(URL);
+    }
+
+    //ver mas informacion -- observaciones
+    obtenerObservaciones(taxonId: number) {
+        const URL = `https://api.inaturalist.org/v1/observations?taxon_id=${taxonId}&photos=true&per_page=12`;
+        //dame cosas que si tengan una foto
+        return this.http.get<RespuestaObservaciones>(URL);
     }
 
 }
