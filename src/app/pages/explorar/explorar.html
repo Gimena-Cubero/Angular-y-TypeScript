@@ -1,5 +1,19 @@
 <h1>Explorar hongos</h1>
 
+<input 
+    type="text"
+    placeholder="Buscar hongos por nombre..."
+    [value] ="terminoBusqueda()" /* muestra en el campo el texto que tenemos guardado en el signal */
+    (input)="actualizarBusqueda($event)" /* detecta cuando el usuario escribe o borra caracteres y llama a un metodo */
+>
+
+<button type="button" (click)="buscar()"> 
+    Buscar 
+</button>
+<button type="button" (click)="limpiarBusqueda()">
+  Limpiar búsqueda
+</button>
+
 @if (cargando()) {
     <p>Cargando especies...</p>
 } @else if (errorCarga()) {
