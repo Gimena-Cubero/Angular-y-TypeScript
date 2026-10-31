@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Catalogo } from './pages/catalogo/catalogo';// creacion de los catalogos de los hongos
 import { Inicio } from './pages/inicio/inicio';
 import { Explorar } from './pages/explorar/explorar';
+import { DetalleHongo } from './pages/detalle-hongo/detalle-hongo';
 
 export const routes: Routes = [
     {
@@ -17,5 +18,10 @@ export const routes: Routes = [
         path: 'catalogo/:categoria', //direcion - texto
         ///:categoria - esto lo combiere en parametro - recibe diferentes valores en esta pocicion
         component: Catalogo // que componente deve mostrar angular - clase en angular
+    },
+    {
+       path: 'hongo/:taxonId', // parametro dinamico
+       component: DetalleHongo 
     }
+    
 ];

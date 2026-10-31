@@ -30,6 +30,9 @@
             } @else {
                 <p>Fotografía no disponible</p>
             }
+            <a [routerLink]="['/hongo', taxon.id]">
+              Ver detalles
+            </a>
         </article>
     } @empty {
         <p>No se encontraron especies.</p>

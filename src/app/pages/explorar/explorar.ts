@@ -1,9 +1,10 @@
 import { Component, signal, Signal } from '@angular/core';
 import { Inaturalist } from '../../services/inaturalist';
 import { Taxon } from '../../models/taxon.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-explorar',
   styleUrl: './explorar.css',
   templateUrl: './explorar.html',
