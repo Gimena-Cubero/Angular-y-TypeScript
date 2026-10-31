@@ -59,10 +59,13 @@ export class Catalogo {
         this.inaturalistService.obtenerVariosTaxones(ids).subscribe({
           next: (respuesta) => {
             this.taxones.set(respuesta.results);
+            this.cargando.set(false);
             console.log('Especies recibidas:', this.taxones().length);
           },
           error: (error) => {
             console.error('Error al consultar iNaturalist:', error);
+            this.errorCarga.set(true);
+            this.cargando.set(false);
           }
         });
 
@@ -70,7 +73,7 @@ export class Catalogo {
         //cuando llegue la respuesta http, hongos dejara de estar vacio
         
 
-        this.cargando.set(false);
+        //this.cargando.set(false);
         //set permite actualizar el valor de una señal
         console.log('Estado de carga en TypeScript:', this.cargando());
       },

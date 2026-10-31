@@ -37,6 +37,14 @@
     } @else {
         @for (observacion of observaciones(); track observacion.id) {
             <article>
+                @if (observacion.photos?.[0]?.url; as fotoUrl) {
+                    <img
+                        [src]="fotoUrl.replace('square', 'medium')"
+                        [alt]="'Observación ' + observacion.id"
+                    >
+                } @else {
+                    <p>Fotografía no disponible.</p>
+                }
                 <p><strong>Observación:</strong> {{ observacion.id }}</p>
                 <p><strong>Fecha:</strong> {{ observacion.observed_on ?? 'No disponible' }}</p>
                 <p><strong>Lugar:</strong> {{ observacion.place_guess ?? 'No disponible' }}</p>
