@@ -28,4 +28,13 @@ export class Inaturalist {
         const URL = `https://api.inaturalist.org/v1/taxa?taxon_id=47170&rank=species&per_page=30&page=${pagina}`;
         return this.http.get<RespuestaTaxones>(URL);
     }
+
+    //buscar hongos
+    buscarHongos(nombre : string, pagina : number = 1){
+        //nombre -lo que escriba el usuario
+        //pagiga - permite que vermas funcione en la busqueda
+        const URL = `https://api.inaturalist.org/v1/taxa?q=${encodeURIComponent(nombre.trim())}&taxon_id=47170&rank=species&per_page=30&page=${pagina}`;
+        return this.http.get<RespuestaTaxones>(URL);
+    }
+
 }
