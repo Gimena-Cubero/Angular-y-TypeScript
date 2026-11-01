@@ -11,8 +11,21 @@
             >
         }
         <p>Nota: {{ favorito.nota }}</p>
+        <button type="button" (click)="editarNota(favorito)">
+          Editar nota
+        </button>
+
+        <!-- editar nota solo aparece si se clickea editar nota -->
+        @if (favoritoEnEdicion() === favorito.taxonId) {
+        <input type="text" [value]="notaEditada()" (input)="notaEditada.set($any($event.target).value)"
+          placeholder="Escribe tu nota">
+          <button type="button" (click)="guardarNota(favorito.taxonId)">
+            Guardar Nota
+          </button>
+        }
+
         <button type="button" (click)="eliminarFavorito(favorito.taxonId)">
-            Eliminar favorito
+          Eliminar favorito
         </button>
     </article>
   } @empty {
