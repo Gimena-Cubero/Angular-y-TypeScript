@@ -20,6 +20,8 @@ app.get('/', (req, res) => { // informacion de la solitud resivida - enviar resp
     // res send = puede ser lo que quiera ser , texto - html ...
 })
 
+
+//todos amamamos estado 
 //rUTA A LA API 
 app.get('/api/estado', (req, res) => {
     res.json({ // envia respuest en json -- solo json
@@ -35,7 +37,7 @@ app.post('/api/favoritos', (req, res) => { // crea
   const existe = favoritos.some(guardado => guardado.taxonId === favorito.taxonId);
   
   if (existe) {
-  return res.status(409).json({ // conflicto con el estado actual de recurso
+    return res.status(409).json({ // conflicto con el estado actual de recurso
     mensaje: 'Este hongo ya está en tus favoritos'
   });
 }
