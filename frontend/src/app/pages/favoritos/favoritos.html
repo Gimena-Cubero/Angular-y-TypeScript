@@ -1,6 +1,15 @@
 <section class="favoritos">
   <h1>Mis hongos favoritos</h1>
 
+  @if (cargando()) {
+    <p>Cargando favoritos...</p>
+  }
+
+  //fallo en la api
+  @if (errorHongos()) {
+    <p>No se pudo cargar la información de algunos hongos. Inténtalo de nuevo más tarde.</p>
+  }
+
   @for (favorito of favoritosDetalle(); track favorito.taxonId) {
     <article class="tarjeta-favorito">
         <h2>{{ favorito.taxon?.name }}</h2>
@@ -29,6 +38,15 @@
         </button>
     </article>
   } @empty {
-    <p>Todavía no tienes hongos favoritos. </p>
+    <!-- //no funciona el backend -->
+    @if (errorCarga()) {
+      <p>No se pudieron cargar tus favoritos. Comprueba la conexión con el servidor.</p>
+    }
+    <!-- no se a guardado los favoritos -->
+    @if (!cargando() && !errorCarga() && !errorHongos() && favoritosDetalle().length === 0) {
+      <!-- no cargamos informacion - no ubo error en b ni en la api - el arreglo esta vacio  -->
+      <p>Todavía no tienes hongos favoritos. </p>
+    }
+    
   }
 </section>

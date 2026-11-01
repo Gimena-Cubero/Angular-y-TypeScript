@@ -17,6 +17,10 @@ export class Favoritos {
   favoritosDetalle = signal<FavoritoDetalle[]>([]); // guarda informacion combinada el id la nota y el objeto
   notaEditada = signal(''); // editar las notitas
   favoritoEnEdicion = signal<number | null>(null); // para saber cual estamos cambiando
+  errorCarga = signal(false); // bakend no esta funcionando
+  cargando = signal(true); // indica si los favoritos todavía se están cargando
+  hongosProcesados = 0; // los hongos que ya se cargaron - y los fallidos
+  errorHongos = signal(false); //por si la api falla
 
   constructor() {
     this.backendService.obtenerFavoritos().subscribe({ //recibe respuesta
@@ -24,6 +28,10 @@ export class Favoritos {
         this.favoritos.set(
           respuesta as { taxonId: number; nota: string }[]
         );
+        // si esta vacio, no necesitamos consultar la api
+        if (this.favoritos().length === 0) {
+          this.cargando.set(false);
+        }
         this.favoritosDetalle.set([]);// vacia el arreglo de tarjetas antes de volver a cargar la informacion
 
         console.log('Favoritos recibidos:', this.favoritos());
@@ -42,16 +50,31 @@ export class Favoritos {
                   }
                 ]);
                 console.log('Favoritos completos:', this.favoritosDetalle());
+
+                //aumenta cuando un hongo de favoritos "se muestra"
+                this.hongosProcesados++;
+                if (this.hongosProcesados === this.favoritos().length) {
+                  this.cargando.set(false); // ya no esta cargando
+                }
               }
             },
             error: error => {
+              this.errorHongos.set(true);
               console.error('Error al obtener el hongo:', error);
+
+              // si no logra cargar un favorito para que no muera en el intento
+              this.hongosProcesados++;
+              if (this.hongosProcesados === this.favoritos().length) {
+                this.cargando.set(false);
+              }
             }
           });
         });
       },
       error: (error) => {
         console.error('Error al obtener favoritos:', error);
+        this.errorCarga.set(true);
+        this.cargando.set(false); //ya no esta cargando
       }
     });
   }
@@ -67,6 +90,7 @@ export class Favoritos {
       },
       error: error => {
         console.error('Error al eliminar favorito:', error);
+        alert('No se pudo eliminar el favorito. Comprueba la conexión con el servidor.');
       }
     });
   }
@@ -107,6 +131,7 @@ export class Favoritos {
       },
       error: error => {
         console.error('Error al actualizar la nota:', error);
+        alert('No se pudo actualizar la nota. Comprueba la conexión con el servidor.');
       }
     });
   }
