@@ -80,9 +80,15 @@ export class DetalleHongo {
     ).subscribe({ // ejecuta el post y recibe la respuesta del express
       next: (respuesta) => {
         console.log('Favorito agregado:', respuesta);
+        alert('Hongo agregado a favoritos correctamente');
       },
       error: (error) => {
-        console.error('Error al agregar favorito:', error);
+        //si quieren guarda 2 veses el mismo ongo sal el mensaje
+        if (error.status === 409) { // no se completo la solicitud
+          alert('Este hongo ya está en tus favoritos');
+        } else {
+          console.error('Error al agregar favorito:', error);
+        }
       }
     });
   }

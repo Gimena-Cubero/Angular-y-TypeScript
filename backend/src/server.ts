@@ -32,6 +32,13 @@ app.get('/api/estado', (req, res) => {
 //ruta post
 app.post('/api/favoritos', (req, res) => { // crea
   const favorito = req.body; // obtiene el json enviado por angular
+  const existe = favoritos.some(guardado => guardado.taxonId === favorito.taxonId);
+  
+  if (existe) {
+  return res.status(409).json({ // conflicto con el estado actual de recurso
+    mensaje: 'Este hongo ya está en tus favoritos'
+  });
+}
   favoritos.push(favorito); // agrega un elemento al final
 
   console.log('Favorito recibido:', favorito);
