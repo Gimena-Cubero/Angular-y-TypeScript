@@ -10,7 +10,7 @@ La aplicación incluye un catálogo de hongos seleccionados, un buscador de espe
 - **Node.js:** ejecución del servidor backend.
 - **Express:** creación de los endpoints para gestionar favoritos.
 - **iNaturalist API:** consulta de especies, fotografías y observaciones de hongos.
-- **JSON local:** almacenamiento de 10 hongos seleccionados para el catálogo.
+- **JSON local:** almacenamiento de 23 hongos seleccionados para el catálogo.
 - **HTML y CSS:** estructura y diseño adaptable de la aplicación.
 - **Git y GitHub:** control de versiones del proyecto.
 
