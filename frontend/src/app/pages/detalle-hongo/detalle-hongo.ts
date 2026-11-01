@@ -88,6 +88,7 @@ export class DetalleHongo {
           alert('Este hongo ya está en tus favoritos');
         } else {
           console.error('Error al agregar favorito:', error);
+          alert('No se pudo agregar el hongo. Comprueba la conexión con el servidor.');
         }
       }
     });
