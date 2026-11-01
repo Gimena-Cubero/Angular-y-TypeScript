@@ -1,7 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Hongos } from './services/hongos';
-
+import { Backend } from './services/backend';
 
 @Component({
   imports: [RouterOutlet],
@@ -11,6 +11,9 @@ import { Hongos } from './services/hongos';
 })
 export class App {
   protected readonly title = signal('Angula_TypeScript');
+  
+  //preparamaos a app para que pueda usar el servicio de 
+  private backendService = inject(Backend);
 
   //COMPROBAR QUE PUEDE LEER los json
   //tambien se considera inyecion de dependencias un componente puede usar un servicio
@@ -26,7 +29,21 @@ export class App {
         console.error('Error all obtener los hongos:', error);
       }
     });
+    
+    //llamar al metodo obtnerEstado
+    this.backendService.obtenerEstado().subscribe({ //metodo get que creamos en el servicio
+      //subscribe = inicia a la solicitud http y recibe resultado
+      next: (respuesta) => {
+        console.log('Respuesta del backend:', respuesta);
+      },
+      error: (error) => {
+        console.error('Error al conectar con el backend:', error);
+      }
+    });
 
   }
+
+  
+
   
 }
