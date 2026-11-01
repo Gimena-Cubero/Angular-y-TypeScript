@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,4 +7,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './inicio.css',
   templateUrl: './inicio.html',
 })
-export class Inicio {}
+export class Inicio {
+  //cosa para que muestre donde estuvo
+  ultimaCategoria = signal(
+    localStorage.getItem('ultimaCategoria') ?? ''
+  );
+}

@@ -14,6 +14,8 @@ export class Favoritos {
   private inaturalistService = inject(Inaturalist);
   favoritos = signal<{ taxonId: number; nota: string }[]>([]);
   favoritosDetalle = signal<FavoritoDetalle[]>([]); // guarda informacion combinada el id la nota y el objeto
+  notaEditada = signal(''); // editar las notitas
+  favoritoEnEdicion = signal<number | null>(null); // para saber cual estamos cambiando
 
   constructor() {
     this.backendService.obtenerFavoritos().subscribe({ //recibe respuesta
@@ -64,6 +66,36 @@ export class Favoritos {
       },
       error: error => {
         console.error('Error al eliminar favorito:', error);
+      }
+    });
+  }
+
+
+  //editar las notas de favoritos
+  editarNota(favorito: FavoritoDetalle) {
+    this.favoritoEnEdicion.set(favorito.taxonId); // nota que queremos editar
+    this.notaEditada.set(favorito.nota); // la que usan par editar
+  }
+
+  //guardar las notas ya editadas
+  guardarNota(taxonId: number) {
+    this.backendService.actualizarFavorito(
+      taxonId,
+      this.notaEditada() // obtiene el txto nuevo
+    ).subscribe({ // espera la respuesta
+      next: () => {
+        console.log('Nota actualizada correctamente');
+        this.favoritosDetalle.update(actuales => // modifica los actuales
+          actuales.map(favorito =>
+            favorito.taxonId === taxonId // identifica el hongo que acabamos de editar
+              ? { ...favorito, nota: this.notaEditada() }
+              : favorito //deja los demas hongos sin cambios
+          )
+        );
+        this.favoritoEnEdicion.set(null); // cuando se guarda se sierra ek boton
+      },
+      error: error => {
+        console.error('Error al actualizar la nota:', error);
       }
     });
   }

@@ -21,7 +21,10 @@ export class Catalogo {
   taxonSeleccionado = signal<Taxon | null>(null);
   taxones = signal<Taxon[]>([]);//para combinar la informacion de la api y  del json
   categoriaActual = signal('');
-  
+  ultimaCategoriaGuardada = signal(
+    localStorage.getItem('ultimaCategoria') ?? '' // que use una cadena vacia si no existe valor
+  ); 
+    
   buscarTaxon(taxonId : number): Taxon | undefined{
     //busca el primero que consida con el id del json si lo encuentra devuelve sino pos nada
     return this.taxones().find((taxon) => taxon.id === taxonId);
@@ -32,9 +35,10 @@ export class Catalogo {
   return this.hongos().filter( //todod los registros del json
     hongo => hongo.categoria === categoria // compara la categoria del registro con la que queremos mostrar
   );
-}
+  }
   
 
+  //usarmos el local storage para que le recuerde al usuario cual fue la ultima pagina que visito
   constructor (
     private hongosService: Hongos, 
     private inaturalistService: Inaturalist,
@@ -45,6 +49,11 @@ export class Catalogo {
     this.route.paramMap.subscribe(params =>{
       this.categoriaActual.set(params.get('categoria') ?? '');
       console.log('Categoría actual:', this.categoriaActual());
+
+      //implementar el disco duro
+      if (this.categoriaActual()) {
+        localStorage.setItem('ultimaCategoria', this.categoriaActual());
+      }
     });
 
 
