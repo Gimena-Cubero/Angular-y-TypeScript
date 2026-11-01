@@ -17,7 +17,7 @@ La aplicación incluye un catálogo de hongos seleccionados, un buscador de espe
 
 ## Funcionalidades
 - **Inicio:** presentación de FungiVerse y acceso a las diferentes secciones.
-- **Catálogo:** muestra 10 especies seleccionadas, organizadas en las categorías Coloridos, Luminosos y Extraordinarios.
+- **Catálogo:** muestra 23 especies seleccionadas, organizadas en las categorías Coloridos, Luminosos y Extraordinarios.
 - **Explorar:** permite buscar especies de hongos mediante la API de iNaturalist.
 - **Detalle del hongo:** muestra información de la especie y sus observaciones.
 - **Favoritos:** permite agregar, consultar y eliminar hongos favoritos.
