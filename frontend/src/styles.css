@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+ /* aqui se escribe lo que es pa todos */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
