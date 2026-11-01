@@ -14,7 +14,7 @@ export class Inicio {
     this.mostrarBienvenida.set(false);
   }
 
-  //cosa para que muestre donde estuvo
+  //cosa para que muestre donde estuvo - json
   ultimaCategoria = signal(
     localStorage.getItem('ultimaCategoria') ?? ''
   );
@@ -25,5 +25,11 @@ export class Inicio {
     //document cookie consulta las cookies de la pagina
     //! = si la galleta no exte mostramos el mensaje
   );
+
+  // si quiero probaR La bienvenida de nuevo en la consola del chrome
+  //1.document.cookie = 'bienvenida=; max-age=0; path=/'
+  //2.document.cookie
+
+  
 }
 

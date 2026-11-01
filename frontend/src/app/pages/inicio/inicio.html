@@ -2,6 +2,13 @@
     <h1>Consulta a INaturalist</h1>
     <p>Busca hacerca de los hongos.</p>
 
+    @if (mostrarBienvenida()) {
+        <section class="aviso-bienvenida">
+            <p>Bienvenido a FungiVerse</p>
+            <button type="button" (click)="aceptarBienvenida()">Entendido</button>
+        </section>
+    }
+
     <a routerLink="/explorar">
         Explorar todos los hongos
     </a>
@@ -44,10 +51,5 @@
         </section>
     }
 
-    @if (mostrarBienvenida()) {
-    <section class="aviso-bienvenida">
-        <p>Bienvenido a FungiVerse</p>
-        <button type="button" (click)="aceptarBienvenida()">Entendido</button>
-    </section>
-    }
+    
 </main>
