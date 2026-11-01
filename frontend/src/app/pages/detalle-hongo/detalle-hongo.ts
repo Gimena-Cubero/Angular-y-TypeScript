@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Inaturalist } from '../../services/inaturalist';
 import { Taxon } from '../../models/taxon.model';
 import { Observacion } from '../../models/observacion.model';
+import { Backend } from '../../services/backend'; // para el favorito
 
 @Component({
   imports: [],
@@ -18,11 +19,13 @@ export class DetalleHongo {
   observaciones = signal<Observacion[]>([]); //guarda lo que llega de i naturalist
   cargandoObservaciones = signal(true); // srguimos esperando ?
   errorObservaciones = signal(false); // llamen a Dios, salen 300 errores
+  favoritos = signal<{ taxonId: number; nota: string }[]>([]); // para guardar los favoritos
 
   // cuando alguien quiera entrar en /hongo/5456
   constructor(
     private route: ActivatedRoute,
-    private inaturalistService: Inaturalist
+    private inaturalistService: Inaturalist,
+    private backendService: Backend
   ) {
   this.route.paramMap.subscribe(params => {
     this.taxonId = Number(params.get('taxonId')); //obtiene el valor
@@ -68,4 +71,33 @@ export class DetalleHongo {
     });
   });
   }
+
+  //apregar la obcion de agregar a faboritos
+  agregarAFavoritos() { //metodo boton
+    this.backendService.agregarFavorito(
+      this.taxonId, //el id del hongo que se esta viendo 
+      'Mi hongo favorito'
+    ).subscribe({ // ejecuta el post y recibe la respuesta del express
+      next: (respuesta) => {
+        console.log('Favorito agregado:', respuesta);
+      },
+      error: (error) => {
+        console.error('Error al agregar favorito:', error);
+      }
+    });
+  }
+
+  //ver los favoritos
+  verFavoritos() {
+  this.backendService.obtenerFavoritos().subscribe({
+    next: (respuesta) => {
+      //guardamos el arreglo dentro de la signal
+      this.favoritos.set(respuesta as { taxonId: number; nota: string }[]);
+      console.log('Mis hongos favoritos:', this.favoritos());
+    },
+    error: (error) => {
+      console.error('Error al obtener favoritos:', error);
+    }
+  });
+}
 }

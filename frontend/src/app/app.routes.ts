@@ -3,6 +3,7 @@ import { Catalogo } from './pages/catalogo/catalogo';// creacion de los catalogo
 import { Inicio } from './pages/inicio/inicio';
 import { Explorar } from './pages/explorar/explorar';
 import { DetalleHongo } from './pages/detalle-hongo/detalle-hongo';
+import { Favoritos } from './pages/favoritos/favoritos';
 
 export const routes: Routes = [
     {
@@ -22,6 +23,10 @@ export const routes: Routes = [
     {
        path: 'hongo/:taxonId', // parametro dinamico
        component: DetalleHongo 
+    },
+    {
+        path: 'favoritos',
+        component: Favoritos
     }
     
 ];
