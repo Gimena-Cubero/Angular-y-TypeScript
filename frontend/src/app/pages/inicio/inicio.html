@@ -1,6 +1,5 @@
 <main>
-    <h1>Consulta a INaturalist</h1>
-    <p>Busca hacerca de los hongos.</p>
+    
 
     @if (mostrarBienvenida()) {
         <section class="aviso-bienvenida">
@@ -9,9 +8,17 @@
         </section>
     }
 
-    <a routerLink="/explorar">
-        Explorar todos los hongos
-    </a>
+    
+
+    <section class="banner">
+        <div class="banner-contenido">
+            <h1>Descubre el universo de los hongos</h1>
+            <p>Explora especies fascinantes, colores sorprendentes y formas extraordinarias.</p>
+            <a routerLink="/explorar">
+                Explorar todos los hongos
+            </a>
+        </div>
+    </section>
 
 
     <section>
@@ -20,18 +27,21 @@
         <div class="categorias">
             <article>
                 <h3>Hongos Coloridos</h3>
+                <img src="/img/seccionColoridos.webp" alt="Hongos coloridos en la naturaleza" class="imagen-categoria">
                 <p>Especies que destacan por sus colores.</p>
                 <a routerLink="/catalogo/coloridos">Explorar coloridos</a>
             </article>
 
             <article>
                 <h3>Hongos luminosos</h3>
+                <img src="/img/seccionLuminosos.webp" alt="Hongos luminosos en la naturaleza" class="imagen-categoria">
                 <p>Especies que pueden producir luz natural.</p>
                 <a routerLink="/catalogo/luminosos">Explorar luminosos</a>
             </article>
 
             <article>
                 <h3>Hongos extraordinarios</h3>
+                <img src="/img/seccionExtraordinarios.webp" alt="Hongo Clathrus ruber de estructura rojiza" class="imagen-categoria">
                 <p>Especies con formas y características sorprendentes.</p>
                 <a routerLink="/catalogo/extraordinarios">Explorar extraordinarios</a>
             </article>
