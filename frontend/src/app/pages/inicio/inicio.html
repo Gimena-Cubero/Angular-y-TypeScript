@@ -2,6 +2,13 @@
     <h1>Consulta a INaturalist</h1>
     <p>Busca hacerca de los hongos.</p>
 
+    @if (mostrarBienvenida()) {
+        <section class="aviso-bienvenida">
+            <p>Bienvenido a FungiVerse</p>
+            <button type="button" (click)="aceptarBienvenida()">Entendido</button>
+        </section>
+    }
+
     <a routerLink="/explorar">
         Explorar todos los hongos
     </a>
@@ -32,16 +39,17 @@
     </section>
 
     @if (ultimaCategoria()) {
-    <section class="continuar-explorando">
-        <h2>Continúa explorando</h2>
+        <section class="continuar-explorando">
+            <h2>Continúa explorando</h2>
+            <p>
+                Tu última categoría visitada fue:
+                {{ ultimaCategoria() }}
+            </p>
+            <a [routerLink]="['/catalogo', ultimaCategoria()]">
+                Volver a explorar
+            </a>
+        </section>
+    }
+
     
-        <p>
-            Tu última categoría visitada fue:
-            {{ ultimaCategoria() }}
-        </p>
-        <a [routerLink]="['/catalogo', ultimaCategoria()]">
-            Volver a explorar
-        </a>
-    </section>
-}
 </main>

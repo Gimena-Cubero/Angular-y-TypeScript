@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Backend } from '../../services/backend';
 import { Inaturalist } from '../../services/inaturalist';
 import type { FavoritoDetalle } from '../../models/favorito';
+import { HongoFavorito } from '../../models/hongo-favorito.model'; // la clase que me invente para cumplir con la rubrica
 
 @Component({
   imports: [],
@@ -79,16 +80,26 @@ export class Favoritos {
 
   //guardar las notas ya editadas
   guardarNota(taxonId: number) {
+    const favoritoActualizado = new HongoFavorito(taxonId, '');// pues la clase que nos inventamos por la rubrica
+    favoritoActualizado.actualizarNota(this.notaEditada());
+
+    //para que no este vacio 
+    if (!favoritoActualizado.nota) {
+      alert('Por favor, escribe una nota antes de guardar.');
+      return;
+    }
+
     this.backendService.actualizarFavorito(
       taxonId,
-      this.notaEditada() // obtiene el txto nuevo
+      //antes era este = this.notaEditada() -- esta si podia guardar espacios porque no tenia el trim
+      favoritoActualizado.nota // obtiene el txto nuevo
     ).subscribe({ // espera la respuesta
       next: () => {
         console.log('Nota actualizada correctamente');
         this.favoritosDetalle.update(actuales => // modifica los actuales
           actuales.map(favorito =>
             favorito.taxonId === taxonId // identifica el hongo que acabamos de editar
-              ? { ...favorito, nota: this.notaEditada() }
+              ? { ...favorito, nota: favoritoActualizado.nota }
               : favorito //deja los demas hongos sin cambios
           )
         );
