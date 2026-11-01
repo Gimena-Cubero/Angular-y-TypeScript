@@ -25,3 +25,35 @@ nav a {
 nav a:hover {
   color: #d4e2c5;
 }
+
+/* Navbar fijo al desplazarse */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navbar en celulares */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 14px 10px;
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+}
