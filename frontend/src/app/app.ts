@@ -3,9 +3,10 @@ import { RouterOutlet } from '@angular/router';
 import { Hongos } from './services/hongos';
 import { Backend } from './services/backend';
 import { Navbar } from './components/navbar/navbar';
+import { Footer } from './components/footer/footer';
 
 @Component({
-  imports: [RouterOutlet, Navbar],
+  imports: [RouterOutlet, Navbar, Footer],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
