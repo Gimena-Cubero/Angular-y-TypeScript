@@ -5,48 +5,49 @@
     <p>Cargando favoritos...</p>
   }
 
-  //fallo en la api
+  <!-- //fallo en la api -->
   @if (errorHongos()) {
     <p>No se pudo cargar la información de algunos hongos. Inténtalo de nuevo más tarde.</p>
   }
+  <div class="favoritos-grid">
 
-  @for (favorito of favoritosDetalle(); track favorito.taxonId) {
-    <article class="tarjeta-favorito">
-        <h2>{{ favorito.taxon?.name }}</h2>
-        @if (favorito.taxon?.default_photo?.medium_url) {
-            <img
-                [src]="favorito.taxon?.default_photo?.medium_url"
-                [alt]="favorito.taxon?.name"
-            >
-        }
-        <p>Nota: {{ favorito.nota }}</p>
-        <button type="button" (click)="editarNota(favorito)">
-          Editar nota
-        </button>
-
-        <!-- editar nota solo aparece si se clickea editar nota -->
-        @if (favoritoEnEdicion() === favorito.taxonId) {
-        <input type="text" [value]="notaEditada()" (input)="notaEditada.set($any($event.target).value)"
-          placeholder="Escribe tu nota">
-          <button type="button" (click)="guardarNota(favorito.taxonId)">
-            Guardar Nota
+    @for (favorito of favoritosDetalle(); track favorito.taxonId) {
+      <article class="tarjeta-favorito">
+          <h2>{{ favorito.taxon?.name }}</h2>
+          @if (favorito.taxon?.default_photo?.medium_url) {
+              <img
+                  [src]="favorito.taxon?.default_photo?.medium_url"
+                  [alt]="favorito.taxon?.name">
+          }
+          <p>Nota: {{ favorito.nota }}</p>
+          <button  class="boton-editar" type="button" (click)="editarNota(favorito)">
+            Editar nota
           </button>
-        }
 
-        <button type="button" (click)="eliminarFavorito(favorito.taxonId)">
-          Eliminar favorito
-        </button>
-    </article>
-  } @empty {
-    <!-- //no funciona el backend -->
-    @if (errorCarga()) {
-      <p>No se pudieron cargar tus favoritos. Comprueba la conexión con el servidor.</p>
+          <!-- editar nota solo aparece si se clickea editar nota -->
+          @if (favoritoEnEdicion() === favorito.taxonId) {
+          <input type="text" [value]="notaEditada()" (input)="notaEditada.set($any($event.target).value)"
+            placeholder="Escribe tu nota">
+            <button class="boton-guardar" type="button" (click)="guardarNota(favorito.taxonId)">
+              Guardar Nota
+            </button>
+          }
+
+          <button class="boton-eliminar" type="button" (click)="eliminarFavorito(favorito.taxonId)">
+            Eliminar favorito
+          </button>
+      </article>
+    } @empty {
+      <!-- //no funciona el backend -->
+      @if (errorCarga()) {
+        <p>No se pudieron cargar tus favoritos. Comprueba la conexión con el servidor.</p>
+      }
+      <!-- no se a guardado los favoritos -->
+      @if (!cargando() && !errorCarga() && !errorHongos() && favoritosDetalle().length === 0) {
+        <!-- no cargamos informacion - no ubo error en b ni en la api - el arreglo esta vacio  -->
+        <p>Todavía no tienes hongos favoritos. </p>
+      }
+      
     }
-    <!-- no se a guardado los favoritos -->
-    @if (!cargando() && !errorCarga() && !errorHongos() && favoritosDetalle().length === 0) {
-      <!-- no cargamos informacion - no ubo error en b ni en la api - el arreglo esta vacio  -->
-      <p>Todavía no tienes hongos favoritos. </p>
-    }
-    
-  }
+  </div>
 </section>
