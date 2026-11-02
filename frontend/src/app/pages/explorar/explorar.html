@@ -1,43 +1,46 @@
 <h1>Explorar hongos</h1>
+<div class="buscador">
+    <input 
+        type="text"
+        placeholder="Buscar hongos por nombre..."
+        /* [value] ="terminoBusqueda()" muestra en el campo el texto que tenemos guardado en el signal */
+        (input)="actualizarBusqueda($event)"> 
+        <!-- detecta cuando el usuario escribe o borra caracteres y llama a un metodo -->
 
-<input 
-    type="text"
-    placeholder="Buscar hongos por nombre..."
-    [value] ="terminoBusqueda()" /* muestra en el campo el texto que tenemos guardado en el signal */
-    (input)="actualizarBusqueda($event)" /* detecta cuando el usuario escribe o borra caracteres y llama a un metodo */
->
-
-<button type="button" (click)="buscar()"> 
-    Buscar 
-</button>
-<button type="button" (click)="limpiarBusqueda()">
-  Limpiar búsqueda
-</button>
+    <button type="button" (click)="buscar()"> 
+        Buscar 
+    </button>
+    <button type="button" (click)="limpiarBusqueda()">
+        Limpiar búsqueda
+    </button>
+</div>
 
 @if (cargando()) {
     <p>Cargando especies...</p>
 } @else if (errorCarga()) {
     <p>No se pudieron cargar las especies.</p>
 } @else {
-    @for (taxon of taxones(); track taxon.id) {
-        <!-- track dice que todos los elementos que ingresen son unicos -->
-        <article>
-            <h2>{{ taxon.name }}</h2>
-            <p>Nombre común: {{ taxon.preferred_common_name ?? 'No disponible' }}</p>
+    <div class="explorar-grid">
+        @for (taxon of taxones(); track taxon.id) {
+            <!-- track dice que todos los elementos que ingresen son unicos -->
+            <article  class="tarjeta-explorar">
+                <h2>{{ taxon.name }}</h2>
+                <p>Nombre común: {{ taxon.preferred_common_name ?? 'No disponible' }}</p>
 
-            @if (taxon.default_photo?.medium_url; as fotoUrl) {
-                <img [src]="fotoUrl" [alt]="taxon.name">
-            } @else {
-                <p>Fotografía no disponible</p>
-            }
-            <a [routerLink]="['/hongo', taxon.id]">
-              Ver detalles
-            </a>
-        </article>
-    } @empty {
-        <p>No se encontraron especies.</p>
-    }
-    <button type="button" (click)="cargarMasHongos()"  [disabled]="cargandoMas()">
+                @if (taxon.default_photo?.medium_url; as fotoUrl) {
+                    <img [src]="fotoUrl" [alt]="taxon.name">
+                } @else {
+                    <p>Fotografía no disponible</p>
+                }
+                <a [routerLink]="['/hongo', taxon.id]">
+                Ver detalles
+                </a>
+            </article>
+        } @empty {
+            <p>No se encontraron especies.</p>
+        }
+    </div>
+    <button type="button"  class="boton-mas" (click)="cargarMasHongos()"  [disabled]="cargandoMas()">
         {{ cargandoMas() ? 'Cargando...' : 'Ver más hongos' }} <!-- operador vaca -->
     </button>
 }

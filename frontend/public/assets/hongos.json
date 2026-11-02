@@ -167,6 +167,13 @@
         "descripcion": "Especie tropical bioluminiscente que destaca por emitir un brillo verdoso intenso en su sombrero y láminas durante la noche.",
         "morfologia": "Sombrero cónico a convexo de tonos blanquecinos o amarillentos con láminas espaciadas y estipe delgado.",
         "destacado": false
+    },
+    {
+        "taxonId": 155173,
+        "categoria": "luminosos",
+        "descripcion": "Pequeño hongo bioluminiscente que emite una tenue luz verde en la oscuridad.",
+        "morfologia": "Presenta un sombrero pequeño de tonalidad grisácea o marrón pálido y un tallo delgado. Crece sobre restos de madera en ambientes húmedos.",
+        "destacado": false
     }
 
 ]

@@ -1,0 +1,144 @@
+h1 {
+  color: #304d38;
+  text-align: center;
+  margin: 36px 0 28px;
+}
+
+/* Buscador */
+
+.buscador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.buscador input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 420px;
+  padding: 12px 16px;
+  border: 1px solid #b7c9b4;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.buscador input:focus {
+  outline: 2px solid #526b57;
+  outline-offset: 2px;
+}
+
+.buscador button,
+.boton-mas {
+  background-color: #526b57;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buscador button:hover,
+.boton-mas:hover {
+  background-color: #304d38;
+}
+
+/* Tarjetas */
+
+.explorar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.tarjeta-explorar {
+  background-color: #f7f8f3;
+  border: 1px solid #e0e6dc;
+  border-radius: 14px;
+  padding: 12px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(25, 50, 30, 0.06);
+}
+
+.tarjeta-explorar h2 {
+  color: #304d38;
+  font-size: 1.05rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.tarjeta-explorar p {
+  color: #455b49;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tarjeta-explorar img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.tarjeta-explorar a {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 10px 14px;
+  background-color: #526b57;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tarjeta-explorar a:hover {
+  background-color: #304d38;
+}
+
+/* Cargar más */
+
+.boton-mas {
+  display: block;
+  margin: 32px auto;
+}
+
+.boton-mas:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .explorar-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .explorar-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .explorar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .buscador input {
+    max-width: none;
+    width: 100%;
+  }
+}

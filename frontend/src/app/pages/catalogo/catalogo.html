@@ -12,9 +12,9 @@
 
 } @else {
   <!-- muestra los hongos -->
-   
- 
-  @for (hongo of filtrarPorCategoria(categoriaActual()); track hongo.taxonId){
+  <div class="catalogo-grid">
+    
+    @for (hongo of filtrarPorCategoria(categoriaActual()); track hongo.taxonId){
     @if (buscarTaxon(hongo.taxonId); as taxon) { <!-- //duscale el que tenga el mismo id -->
       <!-- hongos = arreglo declarado en catalogo ts -->
       <article class="tarjetaHongo">
@@ -38,6 +38,10 @@
     <!-- cuando no hay elementos sale este mensaje -->
     <p>No hay hongos disponibles en el catálogo.</p>
   }
+
+  </div>
+ 
+  
 }
 
 
