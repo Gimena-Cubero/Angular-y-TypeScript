@@ -6,7 +6,7 @@
   <p>No se pudo cargar la información del hongo.</p>
 } @else if (taxon(); as hongo) { <!-- valor del signal -->
 
-  <article>
+  <article class="detalle-principal">
     <h1>{{ hongo.name }}</h1>
 
     <p>
@@ -39,8 +39,11 @@
     } @else if (errorObservaciones()) {
         <p>No se pudieron cargar las observaciones.</p>
     } @else {
+
+      <div class="observaciones-grid">
+
         @for (observacion of observaciones(); track observacion.id) {
-            <article>
+            <article class="tarjeta-observacion">
                 @if (observacion.photos?.[0]?.url; as fotoUrl) {
                     <img
                         [src]="fotoUrl.replace('square', 'medium')"
@@ -55,6 +58,8 @@
             </article>
         } @empty {
             <p>No hay observaciones disponibles.</p>
-        }
+          }
+          
+      </div>
     }
 </section>
